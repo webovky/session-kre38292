@@ -1,7 +1,16 @@
 h1 {
-    color: cadetblue;
+    color: rgb(63, 63, 63);
 }
 
 p {
     color: rgb(236, 98, 33);
+}
+.message{
+    width: 50%
+}
+.pass{
+    color: green
+}
+.err{
+    color: red
 }
