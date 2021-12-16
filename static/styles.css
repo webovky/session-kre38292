@@ -1,16 +1,24 @@
 h1 {
-    color: rgb(63, 63, 63);
+    color: rgb(59, 56, 56);
 }
 
-p {
-    color: rgb(236, 98, 33);
+h2 {
+    color: rgba(35, 189, 81, 0.685);
 }
+
+h3 {
+    color: rgb(153, 62, 62);
+}
+
 .message{
-    width: 50%
+    width: 30%;
+    border: solid black 2px;
+    padding: lem;
+    background-color: lightgray;
 }
 .pass{
-    color: green
+    color: green;
 }
 .err{
-    color: red
+    color: red;
 }

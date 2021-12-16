@@ -14,45 +14,84 @@
 
 <ul>
     <li><a href="{{ url_for('index') }}">Home</a></li>
-    <li><a href="{{ url_for('abc') }}">ABC neco</a></li>
+    <li><a href="{{ url_for('abc') }}">ABC (vyplňování dotazníků)</a></li>
     <li><a href="{{ url_for('kvetak') }}">Květák</a></li>
     <li><a href="/banany/ahoj">Banány</a></li>
     <li><a href="{{ url_for('login') }}">Login</a></li>
 </ul>
 
+<p class="login">
+{% if "user" in session %}
+Jsi přihlášen jako <strong>{{session.get("user")}}</strong>
+<a href="{{ url_for("logout") }}">Odhlásit</a>
+{% else %}
+Nejsi přihlášen!
+<a href="{{ url_for("login") }}">Přihlásit</a>
+{% endif %}
+</p>
+
+
+
+
+
 {% for category, message in get_flashed_messages(with_categories=true)  %}
-<p class="message {{category}}">{{message}}</p>
+    <p class="message {{category}}">{{message}}</p>
 {% endfor %}
 
 
 {% block obsah %}
 
-<p>Bla blal bla</p>
+<h2>Starý zákon</h2>
 
-<p>Jen spotřeby staletí, v zimami připravit ruce řečení sahajícího 
-    u rozhodli pracovat výrazný, map barevné o tvar plyn a 
-    paleontologové vděčili ležela hmyz lodí. Teorií vyšší, deníku 
-    uherské, tato listů, výtlaku stroj z nahoře? Hrom EU budovy 
-    prozkoumáte jste v účinkující volba pódia. Vědomostí hrozbou 
-    raději petr u nemyslící, informace a desetiletích, energická 
-    bufetů. Bych už šimpanzů předávání z chodily o společnost do za 
-    létě. Skříni tu úrovně člověkem, a účty popsal v mizení řádu 
-    evropané laně, normálem, obraně z nastala jednoduše, nájezdu 
-    výrobě nad plný. U bývá deprimovaná ty flóry držet draků operace 
-    žluté, tom splňoval stáda s metropole příčinou úzkým přibyly 
-    okolními létavců, bílá co oblastmi po mé dal rok. Plně výš už 
-    se internet dolní národního lidem Darwin drah a. Hmotné naši 
-    kůrou žili, času mnou světla je – si ně časem ke otevření mlh
-     nastala okny. Předpokládané žert bližší ně mor, se neměly 
-     neobejdou zabývala ruin přispívá obrázek i objevováním, stal 
-     přibližně sloupy té velrybářskou slovácku, ústní zjistit nám 
-     zaměří testují. Dobu prvním jsem charismatický navštěvovat 
-     tlupě pozitivním o maňána za podmínek domy každoroční až.
+<p>První část, Starý zákon nebo Stará smlouva, obsahuje posvátné knihy (tóra, později tanach), které křesťané převzali z judaismu a jsou oběma náboženstvím společné. Někdy se označují jako hebrejská bible.<br>
+[3] Knihy Starého zákona vznikaly postupně od 9. do 1. století př. n. l. nebo i o několik století dříve a byly psány v hebrejštině, pouze některé pasáže aramejsky.<br>
+
+V hebrejské tradici se Starý zákon dělí na Tóru (pět knih Mojžíšových), Proroky a Spisy; v křesťanské tradici obvykle na pět knih Mojžíšových, knihy prorocké a dějepisné a mudroslovné knihy.<br>
+Základ Starého zákona je pět knih Mojžíšových neboli Pentateuch, který vypráví o dějinách světa od jeho stvoření,<br>
+vyvedení izraelského lidu z egyptského otroctví, jeho pouti do Země zaslíbené a přijetí desatera a dalších zákonů.<br>
+Prorocké spisy nesou jméno daného proroka, prostředníka přinášejícího Boží poselství,<br>
+a dělí se dále na čtyři obsáhlejší větší proroky a dvanáct menších proroků.<br>
+Dějepisné knihy pojednávají o historických událostech, zejména z období od příchodu do Země zaslíbené po babylonské zajetí.<br>
+Mudroslovné knihy obsahují sdělení obecnějšího charakteru, poučné a písňové texty.<br>
+Žánrové zařazení však zpravidla není ostře vymezené a uvedené charakteristiky se u jednotlivých knih částečně prolínají.
 </p>
 
-<p>{{ 2 ** 128}}</p>
+<h2>Nový zákon</h2>
+<p>
+Druhá, křesťanská část bible – Nový zákon nebo Nová smlouva, který vznikal během prvních dvou století našeho letopočtu,<br>
+líčí život a učení Ježíše z Nazareta a první dobu křesťanské církve.<br>
+Nejvýznamnější částí Nového zákona jsou evangelia, která popisují život, působení,<br>
+smrt a zmrtvýchvstání Ježíše, který je ústřední postavou křesťanství. Na evangelia bezprostředně navazují Skutky apoštolů.<br>
+Další významnou částí Nového zákona jsou epištoly (listy), dopisy apoštolů adresované různým skupinám souvěrců či jednotlivcům.<br>
+Listy se dělí na Pavlovy epištoly, tradičně připisované Pavlovi z Tarsu, a ostatní, tzv. katolické listy.<br>
+Zvláštní místo v Novém zákoně zaujímá Zjevení Janovo (Apokalypsa), prorocký spis s alegorickými a symbolickými obrazy.<br>
+
+Nový zákon na Starý výslovně navazuje („Nepřišel jsem Zákon zrušit, ale naplnit“[4]) a ukazuje Ježíše jako Krista (Mesiáše),<br>
+kterým Hospodin naplnil svůj slib,<br>
+nově vyložil svůj záměr s člověkem a založil křesťanskou církev.
+</p>
+
+<h2>Otče náš – Padre nuestro</h2>
+<p>
+Padre nuestro que estás en el cielo,<br>
+santificado sea tu Nombre;<br>
+venga a nosotros tu Reino;<br>
+hágase tu voluntad<br>
+en la tierra como en el cielo.<br>
+Danos hoy nuestro pan de cada día;<br>
+perdona nuestras ofensas,<br>
+como también nosotros perdonamos<br>
+a los que nos ofenden;<br>
+no nos dejes caer en la tentación,<br>
+y líbranos del mal. Amén.<br>
+</p>
+
 
 {% endblock obsah %} 
+
+{% block copy %}
+<p>© Filip Krejčí</p>
+{% endblock copy %}
 
 </body>
 </html>

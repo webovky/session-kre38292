@@ -16,7 +16,6 @@ def index():
 
 @app.route("/abc/", methods=["GET"])
 def abc():
-    session['user'] = 'karel'
     try:
         x = request.args.get("x") 
         y = request.args.get("y")
@@ -50,7 +49,11 @@ def banany(parametr):
 
 @app.route("/kvetak/")
 def kvetak():
-    return render_template("kvetak.html.j2")
+    if "user" in session:
+        return render_template("kvetak.html.j2")
+    else:
+        flash(f"Nejsi přihlášen (nebo neočkván), pro zobrazení ({request.path}) je nutné se přihlásit.","err")
+        return redirect(url_for("login",next=request.path))
 
 @app.route("/Login/", methods=("GET",))
 def login():
@@ -64,9 +67,21 @@ def login_post():
     login = request.form.get("login")
     password = request.form.get("password")
     print(login,password)
+    next=request.args.get("next")
     if login == "lofas" and password == "dingus":
         session["user"]=login
-        flash("You son of a b*tch your in","pass")
+        flash("A jsme doma","pass")
+        if next:
+            return redirect(next)
     else:
-        flash("Acces denied","err")
+        flash("Přístup zamítnut, bohužel no, zkus to znova.","err")
+    if next:
+        return redirect(url_for("login"), next=next)
+    else:
+        return redirect(url_for("login"))
+
+@app.route("/logout/")
+def logout():
+    session.pop("user",None)
+    flash("Tak já jdu.","pass")
     return redirect(url_for("login"))
