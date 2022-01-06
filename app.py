@@ -13,8 +13,22 @@ app.secret_key = b'\xe3\x84t\x8b\x02\x1c\xfb\x82PH\x19\xe8\x98\x05\x90\xa8\xc83\
 def index():
     return render_template("base.html.j2", a=12, b=3.14)
 
+def login_required(f):
+    def wrapper(*args, **kwargs):
+        if "user" in session:
+            return f(*args, **kwargs)
+        else:
+            flash(
+                f"Pro zobrazení této stránky ({request.path}) je nutné se přihlásit!",
+                "err",
+            )
+            return redirect(url_for("login", next=request.path))
+    wrapper.__name__=f.__name__
+    wrapper.__doc=f.__doc__
+    return wrapper
 
 @app.route("/abc/", methods=["GET"])
+@login_required
 def abc():
     try:
         x = request.args.get("x") 
